@@ -1,0 +1,23 @@
+version: "2"
+services:
+    nginx:
+      build:
+        context: ${PWD}
+        dockerfile: Dockerfile-Nginx
+#        image: 493849651063.dkr.ecr.ap-southeast-1.amazonaws.com/nginx:nginx
+      ports:
+        - "80:80"
+      networks:
+        - backbone
+    nodejs:
+      build:
+        context: ${PWD}
+        dockerfile: Dockerfile-Adonis
+#     image: 493849651063.dkr.ecr.ap-southeast-1.amazonaws.com/adonis:adonis
+      networks:
+        - backbone
+
+networks:
+  backbone:
+    driver: bridge
+
